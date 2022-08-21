@@ -1,0 +1,68 @@
+﻿
+<style>
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: green 2px solid;
+        border-radius: 5px;
+        margin: 50px 300px 50px 300px;
+        padding: 20px;
+    }
+</style>
+<div class="center">
+    @using (Html.BeginForm("RenewableEnergy", "Home", FormMethod.Post))
+    {
+        <form>
+            <H3 style="color:green">Renewable Energy</H3>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text "> <i class="fa fa-user"></i> </span>
+                </div>
+                <input name="sponsor" class="form-control" placeholder="Sponsor" type="text">
+            </div>
+            <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <input name="watts" class="form-control" placeholder="Watts usable " type="number">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
+                </div>
+
+                <input name="charge" class="form-control" placeholder="Charge" type="number">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-clone" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <select class="form-control" name="renewableEnergyType">
+                    <option value="None">Renewable Energy Type</option>
+                    <option value="Wind">Wind</option>
+                    <option value="Solar">Solar</option>
+                    <option value="Hydro">Hydro</option>
+                </select>
+            </div> <!-- form-group end.// -->
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-arrows-h" aria-hidden="true"></i> </span>
+                </div>
+                <input class="form-control" placeholder="Conductability (Meters)" type="number" name="conductability">
+            </div>
+            <!-- form-group// -->
+           
+            <input type="submit" class="btn btn-success" value="Submit" />
+        </form>
+    }
+
+
+</div>
+

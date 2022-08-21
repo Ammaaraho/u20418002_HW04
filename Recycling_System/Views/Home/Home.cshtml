@@ -1,0 +1,156 @@
+﻿@using u20418002_HW04.Models;
+@model IEnumerable<u20418002_HW04.Models.Energy>
+@{
+    ViewBag.Title = "Home";
+}
+
+
+
+<h2>Non-Renewable</h2>
+
+
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Sponsor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Watts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Charge)
+        </th>
+        <th>
+            Non-Renewable Type
+        </th>
+        <th>
+            Total Wattage
+        </th>
+        <th>
+            Contained Compound
+        </th>
+        <th>
+            Conductability
+        </th>
+        <th>
+            Total cost
+        </th>
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item.GetType() == typeof(NonRenewableEnergy))
+        {
+            NonRenewableEnergy nonRenewableEnergy = (NonRenewableEnergy)item;
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => nonRenewableEnergy.Sponsor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => nonRenewableEnergy.Watts)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => nonRenewableEnergy.Charge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => nonRenewableEnergy.NonRenewableType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => nonRenewableEnergy.Watts)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => nonRenewableEnergy.Compounds)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => nonRenewableEnergy.EnergyGrade)
+                </td>
+                <td>
+                    @item.AccumulatedCost()
+                </td>
+
+
+
+                <td>
+                    @Html.ActionLink("Edit", "EditNonEntry", new { id = item.RecycleID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.RecycleID })
+                </td>
+            </tr>
+
+        }
+    }
+</table>
+
+
+
+<h2>Renewable Energy</h2>
+<!-- Renewable Table-->
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sponsor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Watts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Charge)
+        </th>
+        <th>
+            Renewable Energy
+        </th>
+        <th>
+            conductability
+        </th>
+        <th>
+            Total Cost
+        </th>
+        <th>
+            Pull Cost
+        </th>
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item.GetType() == typeof(RenewableEnergy))
+        {
+            RenewableEnergy renewableEnergy = (RenewableEnergy)item;
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => renewableEnergy.Sponsor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => renewableEnergy.Watts)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => renewableEnergy.Charge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => renewableEnergy.RenewableEnergyType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => renewableEnergy.Conductability)
+                </td>
+                <td>
+                    @item.AccumulatedCost();
+                </td>
+                <td>
+                    @item.CalculateCost();
+                </td>
+                <td>
+
+                <td>
+                    @Html.ActionLink("Edit", "EditreEntry", new { id = item.RecycleID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.RecycleID })
+                </td>
+            </tr>
+
+        }
+    }
+
+</table>
